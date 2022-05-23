@@ -30,8 +30,8 @@ class Item
   private
 
   def can_be_archived?
-    return true if ( Date.today - @publish_date ).to_f / 365 > 10
-  
+    return true if (Date.today - @publish_date).to_f / 365 > 10
+
     false
   end
 end
