@@ -12,5 +12,12 @@ class Game < Item
 
   private
 
-  def can_be_archived?; end
+  def can_be_archived?
+    return super() && !recently_played?
+  end
+
+  private
+
+  def recently_played?
+    (Date.today - @last_played_at).to_f / 365 <= 2
 end
