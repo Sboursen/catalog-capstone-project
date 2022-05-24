@@ -4,7 +4,7 @@ class Label < Type
   attr_accessor :title, :color
 
   def initialize(title, color)
-    super
+    super()
 
     @title = title
     @color = color
