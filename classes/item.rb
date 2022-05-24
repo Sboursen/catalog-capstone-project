@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Item
   attr_reader :genre, :label, :author
   attr_accessor :publish_date
