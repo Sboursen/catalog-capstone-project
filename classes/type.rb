@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Type
   def initialize
     @id = SecureRandom.uuid
@@ -6,5 +8,9 @@ class Type
 
   def add_item(item)
     @items << item
+  end
+
+  def items_list
+    @items
   end
 end

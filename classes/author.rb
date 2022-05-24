@@ -15,8 +15,4 @@ class Author < Type
     super(item)
     item.add_author(self)
   end
-
-  def items_list
-    @items
-  end
 end
