@@ -22,7 +22,7 @@ class Item
 
   def add_author(author)
     @author = author
-    author.add_item(self)
+    @author.add_item(self) unless @author.items_list.include?(self)
   end
 
   def move_to_archive
