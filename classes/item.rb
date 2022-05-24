@@ -4,9 +4,9 @@ class Item
   attr_reader :genre, :label, :author
   attr_accessor :publish_date
 
-  def initialize(published_date)
+  def initialize(publish_date)
     @id = SecureRandom.uuid
-    @publish_date = published_date
+    @publish_date = publish_date
     @archived = false
   end
 
