@@ -10,10 +10,10 @@ class Author < Type
   end
 
   def add_item(item)
-    unless @items.include?(item) 
-      super(item)
-      item.add_author(self)
-    end
+    return if @items.include?(item)
+
+    super(item)
+    item.add_author(self)
   end
 
   def items_list
