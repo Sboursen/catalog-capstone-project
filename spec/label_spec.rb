@@ -6,8 +6,8 @@ describe Label do
   context 'When testing the Label class' do
     before :each do
       @label = Label.new('Important', 'Red')
-      @book1 = Book.new('Allen & Unwin', 'bad', Date.new(1954, 07, 29))
-      @book2 = Book.new('Scholastic Press', 'good', Date.new(2008, 06, 14))
+      @book1 = Book.new('Allen & Unwin', 'bad', Date.new(1954, 7, 29))
+      @book2 = Book.new('Scholastic Press', 'good', Date.new(2008, 9, 14))
       @book3 = Book.new('Amazon', 'good', Date.new(2020, 10, 13))
     end
 
