@@ -12,12 +12,12 @@ class Item
 
   def add_genre(genre)
     @genre = genre
-    genre.add_item(self)
+    @genre.add_item(self) unless @genre.items_list.include?(self)
   end
 
   def add_label(label)
     @label = label
-    label.add_item(self)
+    @label.add_item(self) unless @label.items_list.include?(self)
   end
 
   def add_author(author)
