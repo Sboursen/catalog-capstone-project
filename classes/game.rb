@@ -10,7 +10,24 @@ class Game < Item
     @last_played_at = last_played_at
   end
 
+  def self.from_json(json)
+    json = JSON.parse(json) if json.is_a? String
+    Game.new(json['multiplayer'], json['last_played_at'], json['publish_date'])
+  end
+
+  def to_json(*_args)
+    as_json.to_json
+  end
+
   private
+
+  def as_json
+    {
+      multiplayer: @multiplayer,
+      last_played_at: @last_played_at,
+      publish_date: @publish_date
+    }
+  end
 
   def can_be_archived?
     super() && !recently_played?
