@@ -13,4 +13,14 @@ module Utils
     end
     date
   end
+
+  def self.get_valid_boolean
+    loop do
+        print 'On spotify? [y/n]'
+        on_spotify = gets.chomp
+        next if ['y', 'n'].include?(on_spotify.downcase)
+        return true if on_spotify.downcase == 'y'
+        return false
+    end
+  end
 end
