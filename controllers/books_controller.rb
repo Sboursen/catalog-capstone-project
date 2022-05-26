@@ -1,14 +1,22 @@
-require_relative './query'
-require_relative 'book'
-require 'date'
+require_relative 'query'
+require_relative '../classes/book'
+require_relative 'utils'
 
 class BooksController
   def initialize
     @books = Query.read('books').map { |json| Book.from_json(json) }
   end
 
-  def add_book(book_hash)
-    book = Book.new(book_hash[:publisher], book_hash[:cover_state], Date.parse(book_hash[:publish_date]))
+  def add_book
+    puts '
+    Please enter the following information:
+    '
+    puts 'Publisher: '
+    publisher = gets.chomp
+    puts 'Cover state: good or bad'
+    cover_state = gets.chomp
+    publish_date = Utils.get_valid_date('Publish date')
+    book = Book.new(publisher, cover_state, publish_date)
     @books.push(book)
   end
 
@@ -31,5 +39,11 @@ class BooksController
     books = @books.map(&:to_json)
     books_json = JSON.generate(books)
     Query.write('books', books_json)
+  end
+
+  private
+
+  def date_validator(date)
+    
   end
 end
