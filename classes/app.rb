@@ -46,7 +46,7 @@ class App
     when 7
       @books_controller.add_book
     when 8
-      add_music_album
+      @music_albums_controller.add_music_album
     when 9
       @games_controller.add_game
     when 10
