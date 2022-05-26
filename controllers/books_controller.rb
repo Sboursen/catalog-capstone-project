@@ -2,7 +2,7 @@ require_relative './query'
 require_relative 'book'
 require 'date'
 
-class BookController
+class BooksController
   def initialize
     @books = Query.read('books').map { |json| Book.from_json(json) }
   end
