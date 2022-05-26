@@ -1,4 +1,6 @@
 require_relative '../classes/game'
+require_relative 'utils'
+require_relative 'query'
 
 class GamesController
   attr_reader :games
@@ -7,11 +9,16 @@ class GamesController
     @games = Query.read('games').map { |json| Game.from_json(json) }
   end
 
-  def add_game(game)
-    new_game = Game.new(game['multiplayer'], game['last_played_at'], game['publish_date'])
-
-    @games.push(new_game)
-    puts 'game added successfully!'
+  def add_game
+    puts '
+    Please enter the following information:
+    '
+    puts 'Multiplayer: '
+    multiplayer = gets.chomp
+    last_played_at = Utils.get_valid_date('Last played at')
+    publish_date = Utils.get_valid_date('Publish date')
+    game = Game.new(multiplayer, last_played_at, publish_date)
+    @games.push(game)
   end
 
   def list_games
