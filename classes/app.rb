@@ -1,4 +1,4 @@
-require_relative '../controllers/type_controller'
+require_relative '../controllers/types_controller'
 require_relative '../controllers/books_controller'
 require_relative '../controllers/music_albums_controller'
 require_relative '../controllers/games_controller'
@@ -10,6 +10,16 @@ class App
     @music_albums_controller = MusicAlbumsController.new
     @games_controller = GamesController.new
   end
+
+  def run
+    loop do
+      prints_prompt
+      user_input = gets.chomp.to_i
+      display_options(user_input)
+    end
+  end
+
+  private
 
   def display_options(option)
     case option
@@ -32,12 +42,11 @@ class App
     when 3
       @games_controller.list_games
     when 4
-      @types_controller.genres
+      @types_controller.list_genres
     when 5
-      @types_controller.labels
+      @types_controller.list_labels
     when 6
-      @types_controller.authors
-
+      @types_controller.list_authors
     end
   end
 
@@ -50,7 +59,7 @@ class App
     when 9
       @games_controller.add_game
     when 10
-      exit(true)
+      exit_app
     end
   end
 
@@ -71,11 +80,11 @@ class App
     '
   end
 
-  def run
-    loop do
-      prints_prompt
-      user_input = gets.chomp.to_i
-      display_options(user_input)
-    end
+  def exit_app
+    @books_controller.store_books
+    @games_controller.store_games
+    @music_albums_controller.store_albums
+    puts 'Goodbye!'
+    exit(true)
   end
 end
