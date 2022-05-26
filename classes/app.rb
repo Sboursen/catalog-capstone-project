@@ -1,11 +1,14 @@
+require_relative '../controllers/type_controller'
+require_relative '../controllers/books_controller'
+require_relative '../controllers/music_albums_controller'
+require_relative '../controllers/games_controller'
+
 class App
   def initialize
-    @books = []
-    @labels = []
-    @authors = []
-    @music_albums = []
-    @genres = []
-    @games = []
+    @types_controller = TypesController.new
+    @books_controller = BooksController.new
+    @music_albums_controller = MusicAlbumsController.new
+    @games_controller = GamesController.new
   end
 
   def display_options(option)
@@ -23,17 +26,18 @@ class App
   def display_list_options(option)
     case option
     when 1
-      list_all_books
+      @books_controller.list_books
     when 2
-      list_all_music_albums
+      @music_albums_controller.list_music_albums
     when 3
-      list_all_games
+      @games_controller.list_games
     when 4
-      list_all_genres
+      @types_controller.genres
     when 5
-      list_all_labels
+      @types_controller.labels
     when 6
-      list_all_authors
+      @types_controller.authors
+
     end
   end
 
