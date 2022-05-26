@@ -44,11 +44,11 @@ class App
   def display_add_options(option)
     case option
     when 7
-      add_book
+      @books_controller.add_book
     when 8
       add_music_album
     when 9
-      add_game
+      @games_controller.add_game
     when 10
       exit(true)
     end
