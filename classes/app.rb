@@ -1,12 +1,25 @@
+require_relative '../controllers/types_controller'
+require_relative '../controllers/books_controller'
+require_relative '../controllers/music_albums_controller'
+require_relative '../controllers/games_controller'
+
 class App
   def initialize
-    @books = []
-    @labels = []
-    @authors = []
-    @music_albums = []
-    @genres = []
-    @games = []
+    @types_controller = TypesController.new
+    @books_controller = BooksController.new
+    @music_albums_controller = MusicAlbumsController.new
+    @games_controller = GamesController.new
   end
+
+  def run
+    loop do
+      prints_prompt
+      user_input = gets.chomp.to_i
+      display_options(user_input)
+    end
+  end
+
+  private
 
   def display_options(option)
     case option
@@ -23,30 +36,30 @@ class App
   def display_list_options(option)
     case option
     when 1
-      list_all_books
+      @books_controller.list_books
     when 2
-      list_all_music_albums
+      @music_albums_controller.list_music_albums
     when 3
-      list_all_games
+      @games_controller.list_games
     when 4
-      list_all_genres
+      @types_controller.list_genres
     when 5
-      list_all_labels
+      @types_controller.list_labels
     when 6
-      list_all_authors
+      @types_controller.list_authors
     end
   end
 
   def display_add_options(option)
     case option
     when 7
-      add_book
+      @books_controller.add_book
     when 8
-      add_music_album
+      @music_albums_controller.add_music_album
     when 9
-      add_game
+      @games_controller.add_game
     when 10
-      exit(true)
+      exit_app
     end
   end
 
@@ -67,11 +80,11 @@ class App
     '
   end
 
-  def run
-    loop do
-      prints_prompt
-      user_input = gets.chomp.to_i
-      display_options(user_input)
-    end
+  def exit_app
+    @books_controller.store_books
+    @games_controller.store_games
+    @music_albums_controller.store_albums
+    puts 'Goodbye!'
+    exit(true)
   end
 end
