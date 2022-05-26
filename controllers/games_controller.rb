@@ -1,6 +1,6 @@
 require_relative '../classes/game'
 
-class GameController
+class GamesController
   attr_reader :games
 
   def initialize
