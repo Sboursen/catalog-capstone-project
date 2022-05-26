@@ -2,16 +2,6 @@
 
 > **Catalogue of my things** is a console app that allows users to organize their items. The user can choose to add or show either games, music albums, or books that they had saved. The user can also list the labels, authors, and genres of the saved items.
 
-## Getting Started
-
-- This project at this stage doesn't require any special setup. Simply clone or
-download the project and use the classes as per your need.
-
-`git clone https://github.com/Sboursen/catalog-capstone-project.git`
-
-- Run `bundle install` to get the dependencies.
-- Run `ruby ./classes/app.rb`
-
 ## Milestones
 
 - [x] Milestone 1: **Create the Item, Book, MusicAlbum, and Game classes**
@@ -20,6 +10,24 @@ download the project and use the classes as per your need.
 - [x] Milestone 4: **Added Unit tests**
 - [x] Milestone 5: **Added tables in `schema.sql`**
 - [x] Milestone 6: **Create the console app and Implement data handling functionalities**
+
+## Sneek peak
+
+![app](./images/app_screenshots.png)
+
+## UML diagram
+
+![app](./images/uml.png)
+
+## Getting Started
+
+- This project at this stage doesn't require any special setup. Simply clone or
+  download the project and use the classes as per your need.
+
+`git clone https://github.com/Sboursen/catalog-capstone-project.git`
+
+- Run `bundle install` to get the dependencies.
+- Run `ruby main.rb`
 
 ## Built With
 

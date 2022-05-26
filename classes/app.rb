@@ -12,6 +12,9 @@ class App
   end
 
   def run
+    puts
+    puts 'Hello'
+    puts 'Welcome to your catalog app!'
     loop do
       prints_prompt
       user_input = gets.chomp.to_i
