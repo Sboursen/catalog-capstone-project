@@ -15,7 +15,7 @@ class Book < Item
     Book.new(json['publisher'], json['cover_state'], json['publish_date'])
   end
 
-  def to_json
+  def to_json(*_args)
     as_json.to_json
   end
 
@@ -31,9 +31,9 @@ class Book < Item
 
   def as_json
     {
-        publisher: @publisher,
-        cover_state: @cover_state,
-        publish_date: @publish_date
+      publisher: @publisher,
+      cover_state: @cover_state,
+      publish_date: @publish_date
     }
   end
 end
