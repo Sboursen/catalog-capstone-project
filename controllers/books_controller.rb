@@ -43,7 +43,5 @@ class BooksController
 
   private
 
-  def date_validator(date)
-    
-  end
+  def date_validator(date); end
 end

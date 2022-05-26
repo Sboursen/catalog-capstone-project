@@ -7,12 +7,12 @@ class MusicAlbumsController
     @music_albums = Query.read('albums').map { |json| MusicAlbum.from_json(json) }
   end
 
-  def add_music_album(album_hash)
+  def add_music_album(_album_hash)
     puts '
     Please enter the following information:'
     print 'Album name: '
     album = gets.chomp
-    on_spotify = Utils.get_valid_boolean
+    on_spotify = Utils.validate_boolean
     publish_date = Utils.get_valid_date('Publish date')
     music_album = MusicAlbum.new(album, on_spotify, publish_date)
     @music_albums.push(music_album)
