@@ -7,7 +7,7 @@ class MusicAlbumsController
     @music_albums = Query.read('albums').map { |json| MusicAlbum.from_json(json) }
   end
 
-  def add_music_album(_album_hash)
+  def add_music_album
     puts '
     Please enter the following information:'
     print 'Album name: '
@@ -16,18 +16,22 @@ class MusicAlbumsController
     publish_date = Utils.get_valid_date('Publish date')
     music_album = MusicAlbum.new(album, on_spotify, publish_date)
     @music_albums.push(music_album)
+    puts 'Music album got added successfully.'
   end
 
   def list_music_albums
     if @music_albums.length.zero?
-      puts 'The album list is empty! Please add a music album first!'
+      puts 'The music album list is empty! Please add a music album first!'
     else
       puts
       puts 'The music albums list: '
+      puts
       @music_albums.each_with_index do |album, index|
-        puts "#{index + 1}- name: #{album.publisher},
-          On spotify: #{album.cover_state},
-          Publish date: #{album.publish_date}"
+        puts "#{index + 1}) music album details:"
+        puts "Name: #{album.name}"
+        puts "Publish date: #{album.publish_date}"
+        puts "On spotify: #{album.on_spotify}"
+        puts
       end
     end
     @music_albums

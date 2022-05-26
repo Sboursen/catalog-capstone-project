@@ -13,24 +13,26 @@ class BooksController
     '
     puts 'Publisher: '
     publisher = gets.chomp
-    puts 'Cover state: good or bad'
-    cover_state = gets.chomp
+    cover_state = Utils.validate_cover_state
     publish_date = Utils.get_valid_date('Publish date')
     book = Book.new(publisher, cover_state, publish_date)
     @books.push(book)
+    puts 'Book got added successfully.'
   end
 
   def list_books
     if @books.empty?
-      puts 'The book list is empty! Please add a book first!'
+      puts 'The books list is empty! Please add a book first!'
     else
       puts
       puts 'The book list: '
+      puts
       @books.each_with_index do |book, index|
-        puts "#{index + 1}) book detail:"
-        print " Publisher: #{book.publisher},
-                Publish Date: #{book.publish_date},
-                Cover state: #{book.cover_state}"
+        puts "#{index + 1}) book details:"
+        puts "Publisher: #{book.publisher}"
+        puts "Publish Date: #{book.publish_date}"
+        puts "Cover state: #{book.cover_state}"
+        puts
       end
     end
   end

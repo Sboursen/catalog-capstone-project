@@ -19,19 +19,21 @@ class GamesController
     publish_date = Utils.get_valid_date('Publish date')
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
+    puts 'Game got added successfully.'
   end
 
   def list_games
     if @games.empty?
-      puts 'The game list is empty! Please add a game first!'
+      puts 'The games list is empty! Please add a game first!'
     else
       puts
       puts 'The game list: '
+      puts
       @games.each_with_index do |game, index|
-        puts "#{index + 1}) game detail:"
-        print " Multiplayer: #{game.multiplayer},
-                Publish Date: #{game.publish_date},
-                Last played: #{game.last_played_at}"
+        puts "#{index + 1}) game details:"
+        puts "Multiplayer: #{game.multiplayer}"
+        puts "Publish Date: #{game.publish_date}"
+        puts "Last played: #{game.last_played_at}"
       end
     end
   end

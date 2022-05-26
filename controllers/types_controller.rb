@@ -3,8 +3,6 @@ require_relative '../classes/genre'
 require_relative '../classes/author'
 
 class TypesController
-  attr_reader :labels, :genres, :authors
-
   def initialize
     @labels = []
     @genres = []
@@ -23,6 +21,38 @@ class TypesController
     author_hash.each do |hash|
       author = Author.new(hash[:first_name], hash[:last_name])
       @authors << author
+    end
+  end
+
+  def list_labels
+    puts 'The labels list: '
+    puts
+    @labels.each_with_index do |label, index|
+      puts "#{index + 1}) label details:"
+      puts "Title: #{label.title}"
+      puts "Color: #{label.color}"
+      puts
+    end
+  end
+
+  def list_genres
+    puts 'The genres list: '
+    puts
+    @genres.each_with_index do |genre, index|
+      puts "#{index + 1}) genre details:"
+      puts "Name: #{genre.name}"
+      puts
+    end
+  end
+
+  def list_authors
+    puts 'The authors list: '
+    puts
+    @authors.each_with_index do |author, index|
+      puts "#{index + 1}) author details:"
+      puts "First name: #{author.first_name}"
+      puts "Last name: #{author.last_name}"
+      puts
     end
   end
 
